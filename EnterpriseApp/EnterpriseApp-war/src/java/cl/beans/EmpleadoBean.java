@@ -57,6 +57,8 @@ public class EmpleadoBean {
         nuevo.setNrodoc(nroDoc);
         nuevo.setTelefono(telefono);
         nuevo.setDireccion(direccion);
+        nuevo.setPuestoid(puestosFacade.find( puesto.getPuestoid()));
+        empleadosFacade.create(nuevo);
         return "Empleado";
     }
     

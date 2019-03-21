@@ -8,26 +8,28 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h:form id="faceEmp">
+        <h:form id="form1">
             <h:panelGrid>
-                <h:outputText id="NRODOC" />
-                <h:inputText value="#{empleadoBean.nroDoc}"/>
-                <h:outputText id="NOMBRE" />
-                <h:inputText value="#{empleadoBean.nombre}"/>
-                <h:outputText id="APELLIDO" />
-                <h:inputText value="#{empleadoBean.apellido}"/>
-                <h:outputText id="DIRECCION" />
-                <h:inputText value="#{empleadoBean.direccion}"/>
-                <h:outputText id="TELEFONO" />
-                <h:inputText value="#{empleadoBean.telefono}"/>
-                <h:outputText id="PUESTO" />
-                <h:selectOneMenu validator="#{empleadoBean.puesto.puestoid}">
+                <h:outputText value="NRODOC" />
+                <h:inputText value="#{empleadoBean.nroDoc}" required="true"/>
+                <h:outputText value="NOMBRE" />
+                <h:inputText value="#{empleadoBean.nombre}" required="true"/>
+                <h:outputText value="APELLIDO" />
+                <h:inputText value="#{empleadoBean.apellido}" required="true"/>
+                <h:outputText value="DIRECCION" />
+                <h:inputText value="#{empleadoBean.direccion}" required="true"/>
+                <h:outputText value="TELEFONO" />
+                <h:inputText value="#{empleadoBean.telefono}" required="true"/>
+                <h:outputText value="PUESTO" />
+                <h:selectOneMenu value="#{empleadoBean.puesto.puestoid}">
                     <f:selectItems value="#{puestoBean.puestos}" var="p" itemLabel="#{p.descripcion}" itemValue="#{p.puestoid}"/>
                 </h:selectOneMenu>
                 <h:outputText value=""/>
-                <p:commandButton actionListener="#{empleadoBean.setNuevoEmpleado()}" value="Guardar" update="faceEmp"/>
+                <p:commandButton actionListener="#{empleadoBean.setNuevoEmpleado()}" value="Guardar" update=":form1,:form2"/>
             </h:panelGrid>
-
+        </h:form>
+        
+        <h:form id="form2">
             <p:dataTable value="#{empleadoBean.listaEmpleados}" var="e">
                 <p:column headerText="ID">
                     <h:outputText value="#{e.idemp}" />
@@ -48,7 +50,6 @@
                     <h:outputText value="#{e.puestoid.descripcion}" />
                 </p:column>
             </p:dataTable>
-
         </h:form>
     </h:body>
 </html>
