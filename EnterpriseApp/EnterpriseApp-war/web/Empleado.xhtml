@@ -13,7 +13,7 @@
                 <h:inputText value="#{empleadoBean.nroDoc}"/>
             </h:panelGrid>
 
-            <h:dataTable value="#{empleadoBean.listaEmpleados}" var="e">
+            <p:dataTable value="#{empleadoBean.listaEmpleados}" var="e">
                 <p:column headerText="ID">
                     <h:outputText value="#{e.idemp}" />
                 </p:column>
@@ -32,7 +32,7 @@
                  <p:column headerText="PUESTO">
                      <h:outputText value="#{e.puestoid.descripcion}" />
                 </p:column>
-            </h:dataTable>
+            </p:dataTable>
 
         </h:form>
     </h:body>
