@@ -5,6 +5,12 @@
  */
 package cl.beans;
 
+import cl.pojos.Puestos;
+import cl.servicios.PuestosFacadeLocal;
+import com.sun.javafx.geom.CubicApproximator;
+import java.math.BigDecimal;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 
@@ -16,10 +22,46 @@ import javax.enterprise.context.RequestScoped;
 @RequestScoped
 public class PuestoBean {
 
-    /**
-     * Creates a new instance of PuestoBean
-     */
-    public PuestoBean() {
+    @EJB
+    private PuestosFacadeLocal puestosFacade;
+
+    private BigDecimal id;
+    private String descripcion;
+    
+    
+    public PuestoBean() {  
+        
     }
     
+    
+    public List<Puestos> getCursos(){
+        return puestosFacade.findAll();
+    }
+    
+    public String setCurso(){
+        
+        Puestos nuevo = new Puestos();
+        nuevo.setDescripcion(descripcion);
+        nuevo.setPuestoid(id);
+        puestosFacade.create(nuevo);
+        return "Puesto";
+    }
+
+    public BigDecimal getId() {
+        return id;
+    }
+
+    public void setId(BigDecimal id) {
+        this.id = id;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    
+   
 }
