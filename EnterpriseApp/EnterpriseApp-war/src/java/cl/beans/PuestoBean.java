@@ -34,11 +34,11 @@ public class PuestoBean {
     }
     
     
-    public List<Puestos> getCursos(){
+    public List<Puestos> getPuestos(){
         return puestosFacade.findAll();
     }
     
-    public String setCurso(){
+    public String setPuesto(){
         
         Puestos nuevo = new Puestos();
         nuevo.setDescripcion(descripcion);
