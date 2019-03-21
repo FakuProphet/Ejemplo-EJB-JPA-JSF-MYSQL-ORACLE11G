@@ -1,12 +1,40 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h:form id="faceEmp">
+            <h:panelGrid>
+                <h:outputText id="NRODOC" />
+                <h:inputText value="#{empleadoBean.nroDoc}"/>
+            </h:panelGrid>
+
+            <h:dataTable value="#{empleadoBean.listaEmpleados}" var="e">
+                <p:column headerText="ID">
+                    <h:outputText value="#{e.idemp}" />
+                </p:column>
+                <p:column headerText="NOMBRE">
+                    <h:outputText value="#{e.nombres}" />
+                </p:column>
+                <p:column headerText="APELLIDO">
+                    <h:outputText value="#{e.apellidos}" />
+                </p:column>
+                <p:column headerText="NRO DOCUMENTO">
+                    <h:outputText value="#{e.nrodoc}" />
+                </p:column>
+                <p:column headerText="DIRECCION">
+                    <h:outputText value="#{e.direccion}" />
+                </p:column>
+                 <p:column headerText="PUESTO">
+                     <h:outputText value="#{e.puestoid.descripcion}" />
+                </p:column>
+            </h:dataTable>
+
+        </h:form>
     </h:body>
 </html>
 
